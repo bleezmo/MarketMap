@@ -1,12 +1,16 @@
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 buildscript {
     ext {
         springBootVersion = '1.2.0.RELEASE'
+        springLoadedVersion = '1.2.0.RELEASE'
     }
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework:springloaded:${springLoadedVersion}")
     }
 }
 
@@ -19,17 +23,21 @@ jar {
     baseName = 'MarketMap'
     version = '0.0.1-SNAPSHOT'
 }
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
 
 repositories {
     mavenCentral()
 }
 
-
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
 }
 
 eclipse {
