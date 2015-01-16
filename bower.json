@@ -5,9 +5,6 @@
   "authors": [
     "bleezmo <joshuarogers10@gmail.com>"
   ],
-  "moduleType": [
-    "amd"
-  ],
   "license": "MIT",
   "ignore": [
     "**/.*",
