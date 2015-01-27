@@ -2,8 +2,11 @@ package com.bleezmo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Iterator;
 
 @Configuration
 @ComponentScan
@@ -11,6 +14,28 @@ import org.springframework.context.annotation.Configuration;
 public class MarketMapApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MarketMapApplication.class, args);
+
+        ConfigurableApplicationContext context = SpringApplication.run(MarketMapApplication.class, args);
+        CustomerRepository repository = context.getBean(CustomerRepository.class);
+
+        repository.save(new Customer("Jack","Bauer"));
+        repository.save(new Customer("jesus","christ"));
+
+        Iterable<Customer> customers = repository.findAll();
+        for(Customer customer : customers){
+            System.out.println(customer);
+        }
+
+        customers = repository.findByLastName("Bauer");
+        for(Customer customer : customers){
+            System.out.println(customer);
+        }
+
+        customers = repository.findByFirstName("jesus");
+        for(Customer customer : customers) {
+            System.out.println(customer);
+        }
+
+        context.close();
     }
 }
