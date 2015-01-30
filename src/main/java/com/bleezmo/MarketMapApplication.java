@@ -43,7 +43,6 @@ public class MarketMapApplication {
 
         MessageComponent mybean = context.getBean(MessageComponent.class);
         mybean.processMessage("hello email bean");
-
-        context.close();
+        // context.close();
     }
 }

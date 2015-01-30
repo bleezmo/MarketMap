@@ -4,8 +4,9 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     wiredep: {
-      target: {
-        src: 'src/main/resources/templates/main.html'
+      task: {
+        src: 'src/main/resources/templates/main.html',
+        ignorePath: "../public"
       }
     },
     // Metadata.
